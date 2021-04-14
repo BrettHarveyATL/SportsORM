@@ -1,0 +1,217 @@
+<div class="card">
+    <div class="card-header bg-dark text-light">Level 1</div>
+    <div class="card-body">
+        <p>Using the SportsORM, complete all the following queries and show their results on Level1.cshtml.</p>
+        <h3>All Women's Leagues</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                        <th>League Sport</th>
+                    </tr>
+                    @foreach(var womens in ViewBag.WomansLeague)
+                    {
+                        <tr>
+                            <td>@womens.Name</td>
+                            <td>@womens.Sport</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Hockey Leagues</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                    </tr>
+                    @foreach(var hockey in ViewBag.HockyLeague)
+                    {
+                        <tr>
+                            <td>@hockey.Name</td>
+                            <td>@hockey.Sport</td>
+                        </tr>
+                    }
+                </table>
+        <h3>Not Football Leagues</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                    </tr>
+                    @foreach(var l in ViewBag.NotFootball)
+                    {
+                        <tr>
+                            <td>@l.Name</td>
+                            <td>@l.Sport</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Conferences</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                        <th>League Sport</th>
+                    </tr>
+                    @foreach(var conference in ViewBag.Conferences)
+                    {
+                        <tr>
+                            <td>@conference.Name</td>
+                            <td>@conference.Sport</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Atlantic</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                        <th>League Sport</th>
+                    </tr>
+                    @foreach(var atl in ViewBag.Atlantic)
+                    {
+                        <tr>
+                            <td>@atl.Name</td>
+                            <td>@atl.Sport</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Dallas</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Location</th>
+                        <th>Team Name</th>
+                    </tr>
+                    @foreach(var city in ViewBag.Dallas)
+                    {
+                        <tr>
+                            <td>@city.Location</td>
+                            <td>@city.TeamName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Raptors</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Location</th>
+                        <th>Team Name</th>
+                    </tr>
+                    @foreach(var team in ViewBag.Raptors)
+                    {
+                        <tr>
+                            <td>@team.Location</td>
+                            <td>@team.TeamName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Teams That Start with T</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Location</th>
+                        <th>Team Name</th>
+                    </tr>
+                    @foreach(var team in ViewBag.StartWithT)
+                    {
+                        <tr>
+                            <td>@team.Location</td>
+                            <td>@team.TeamName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Names By Location In Alphabetical Order</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Location</th>
+                        <th>Team Name</th>
+                    </tr>
+                    @foreach(var team in ViewBag.Alpha)
+                    {
+                        <tr>
+                            <td>@team.Location</td>
+                            <td>@team.TeamName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Teams In Reverse Alphabetical Order</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Location</th>
+                        <th>Team Name</th>
+                    </tr>
+                    @foreach(var team in ViewBag.AlphaReverse)
+                    {
+                        <tr>
+                            <td>@team.Location</td>
+                            <td>@team.TeamName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Players with Last Name Cooper</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                    @foreach(var player in ViewBag.Coop)
+                    {
+                        <tr>
+                            <td>@player.FirstName</td>
+                            <td>@player.LastName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Players with First Name Joshua</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                    @foreach(var player in ViewBag.Josh)
+                    {
+                        <tr>
+                            <td>@player.FirstName</td>
+                            <td>@player.LastName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All Players besides Joshua and Cooper</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                    @foreach(var player in ViewBag.NotJC)
+                    {
+                        <tr>
+                            <td>@player.FirstName</td>
+                            <td>@player.LastName</td>
+                        </tr>
+                    }
+                </table>
+        <h3>All players with first name "Alexander" OR first name "Wyatt"</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                    @foreach(var player in ViewBag.AlexWyatt)
+                    {
+                        <tr>
+                            <td>@player.FirstName</td>
+                            <td>@player.LastName</td>
+                        </tr>
+                    }
+                </table>
+        <ol>
+            <li>...all womens' leagues</li>
+            <li>...all leagues where sport is any type of hockey</li>
+            <li>...all leagues where sport is something OTHER THAN football</li>
+            <li>...all leagues that call themselves "conferences"</li>
+            <li>...all leagues in the Atlantic region</li>
+            <li>...all teams based in Dallas</li>
+            <li>...all teams named the Raptors</li>
+            <li>...all teams whose location includes "City"</li>
+            <li>...all teams whose names begin with "T"</li>
+            <li>...all teams, ordered alphabetically by location</li>
+            <li>...all teams, ordered by team name in reverse alphabetical order</li>
+            <li>...every player with last name "Cooper"</li>
+            <li>...every player with first name "Joshua"</li>
+            <li>...every player with last name "Cooper" EXCEPT those with "Joshua" as the first name</li>
+            <li>...all players with first name "Alexander" OR first name "Wyatt"</li>
+        </ol>
+    </div>
+</div>
