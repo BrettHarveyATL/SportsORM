@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SportsORM.Models;
 
 
@@ -60,11 +61,11 @@ namespace SportsORM.Controllers
                 .ToList();
             ViewBag.Alpha = _context.Teams
                 .Select(team => team)
-                .OrderBy(team=> team.Location)
+                .OrderBy(team => team.Location)
                 .ToList();
             ViewBag.AlphaReverse = _context.Teams
                 .Select(team => team)
-                .OrderByDescending(team=> team.TeamName)
+                .OrderByDescending(team => team.TeamName)
                 .ToList();
             ViewBag.Coop = _context.Players
                 .Where(player => player.LastName.Contains("Cooper"))
@@ -84,9 +85,50 @@ namespace SportsORM.Controllers
         [HttpGet("level_2")]
         public IActionResult Level2()
         {
+            ViewBag.NumberOne = _context.Teams
+                .Include(t => t.CurrLeague)
+                .Where(t => t.CurrLeague.Name == "Atlantic Soccer Conference")
+                .ToList();
+            ViewBag.NumberTwo = _context.Players
+                .Include(p => p.CurrentTeam)
+                .Where(p => p.CurrentTeam.TeamName == "Penguins")
+                .Where(p => p.CurrentTeam.Location == "Boston")
+                .ToList();
+            ViewBag.NumberThree = _context.Players
+                .Include(p => p.CurrentTeam)
+                .Where(p => p.CurrentTeam.CurrLeague.Name == "International Collegiate Baseball Conference")
+                .ToList();
+            ViewBag.NumberFour = _context.Players
+                .Include(p => p.CurrentTeam)
+                .Where(p => p.CurrentTeam.CurrLeague.Name == "American Conference of Amateur Football" && p.LastName == "Lopez")
+                .ToList();
+            ViewBag.NumberFive = _context.Players
+            .Include(player => player.CurrentTeam)
+            .Include(player => player.CurrentTeam.CurrLeague)
+            .Where(player => player.CurrentTeam.CurrLeague.Sport == "Football")
+            .ToList();
+            // ...all teams with a (current) player named "Sophia"
+            ViewBag.NumberSix = _context.Players
+            .Include(player => player.CurrentTeam)
+            .Where(player => player.FirstName == "Sophia")
+            .ToList();
+            //...all leagues with a (current) player named "Sophia"
+            ViewBag.NumberSeven = _context.Players
+            .Include(player => player.CurrentTeam)
+            .Include(player => player.CurrentTeam.CurrLeague)
+            .Where(player => player.FirstName == "Sophia")
+            .ToList();
+            ViewBag.NumberEight = _context.Players
+            .Include(player => player.CurrentTeam)
+            .Where(player => player.CurrentTeam.TeamName != "Roughriders")
+            .Where(player => player.LastName == "Flores")
+            .ToList();
             return View();
+            
+            
+            // ...everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders
         }
-
+            
         [HttpGet("level_3")]
         public IActionResult Level3()
         {
